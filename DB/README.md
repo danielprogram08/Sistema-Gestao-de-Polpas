@@ -1,1 +1,1 @@
-# Repositório Baco de Dados SIP (Sistema Inteligente de Poupas).
+# Repositório Baco de Dados SGP (Sistema Gerenciador de Poupas).
