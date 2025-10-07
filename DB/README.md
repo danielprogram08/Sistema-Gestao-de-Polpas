@@ -1,1 +1,1 @@
-# Repositório Baco de Dados SGP (Sistema Gerenciador de Poupas).
+# Repositório Banco de Dados SGP (Sistema Gerenciador de Poupas).
