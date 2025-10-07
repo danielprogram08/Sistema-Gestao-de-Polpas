@@ -1,1 +1,1 @@
-# Repositório Front-End SIP (Sistema Gerenciador de Poupas).
+# Repositório Front-End SGP (Sistema Gerenciador de Poupas).
