@@ -1,0 +1,1 @@
+# Diretório para Arquivos de Controles de Endpoints.

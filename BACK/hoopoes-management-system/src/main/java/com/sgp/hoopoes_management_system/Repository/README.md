@@ -1,0 +1,1 @@
+# Diretório para Arquivo de acesso ao banco de dados.

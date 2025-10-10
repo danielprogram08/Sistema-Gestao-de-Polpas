@@ -1,0 +1,1 @@
+# Diretório para Arquivos de Configurações de acessos e permissões.
