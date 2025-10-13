@@ -18,3 +18,8 @@
 
 - ### Repository:
     - Contém o arquivo de persistência de dados.
+ 
+# Padrão de Commit: 
+- **Add:** Adicionar nova feature/Finalizar tarefa, ex: **'Add: Back Ambient'**
+- **Mod:** Modificação ou alteração em alguma tarefa, ex: **Mod: README.md in Back diretory**
+- **Del:** Exclusão de algum recurso, diretório ou arquivo, ex: **Del: Docker-Compose.yml**
