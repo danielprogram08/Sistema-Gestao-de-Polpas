@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  estoques_db:
+    image: postgres
+    container_name: estoques_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=estoques_db
+    volumes:
+      - estoques_db_data:/var/lib/postgresql/data
+    restart: always
+
+## Default Volume Settings
+volumes:
+  estoques_db_data: {}
