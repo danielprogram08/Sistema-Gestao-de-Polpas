@@ -1,0 +1,1 @@
+# Diretório criado para o tratamento das exceções customizadas

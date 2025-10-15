@@ -1,0 +1,1 @@
+# Diretório responsável pela criação das exceções customizadas
