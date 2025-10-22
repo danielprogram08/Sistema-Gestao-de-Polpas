@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sgp.hoopoes_management_system.Domain.Users.userDTO;
 import com.sgp.hoopoes_management_system.Domain.Users.users;
+import com.sgp.hoopoes_management_system.Exception.BadRequestExceptionError;
 import com.sgp.hoopoes_management_system.Repository.Users.userRepository;
 
 @Service
@@ -17,7 +18,7 @@ public class AuthService {
 
     public Optional<users> authenticateUser(users data) {
         if (data.getLogin() == null || data.getLogin().isBlank() || data.getPassword() == null || data.getPassword().isBlank()) {
-            throw new IllegalArgumentException("Login e senha não podem ser nulos ou vazios.");
+            throw new BadRequestExceptionError("Login e senha são obrigatórios.");
         }
 
         return repository.findByLoginAndPassword(data.getLogin(), data.getPassword());
