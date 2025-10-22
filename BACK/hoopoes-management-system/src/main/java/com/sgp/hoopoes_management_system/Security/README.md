@@ -1,1 +1,0 @@
-# Diretório para Arquivos de Configurações de segurança.

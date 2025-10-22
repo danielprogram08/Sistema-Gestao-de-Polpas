@@ -1,13 +1,13 @@
 package com.sgp.hoopoes_management_system.Domain.Users;
 
-public enum UserRole {
+public enum userRole {
     
     ADMIN("admin"),
     USER("user");
 
     private final String role;
 
-    private UserRole(String role) {
+    private userRole(String role) {
         this.role = role;
     }
 
