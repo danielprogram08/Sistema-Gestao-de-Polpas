@@ -16,5 +16,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         RestErrorMessage error = new RestErrorMessage(exception.getMessage(), HttpStatus.BAD_REQUEST);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
-
 }

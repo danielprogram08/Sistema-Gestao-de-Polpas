@@ -30,9 +30,4 @@ public class users {
 
     @Enumerated(EnumType.STRING)
     private userRole role;
-
-    public users (String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
 }
