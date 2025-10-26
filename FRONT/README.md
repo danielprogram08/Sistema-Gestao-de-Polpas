@@ -1,1 +1,0 @@
-# Repositório Front-End SGP (Sistema Gerenciador de Poupas).
