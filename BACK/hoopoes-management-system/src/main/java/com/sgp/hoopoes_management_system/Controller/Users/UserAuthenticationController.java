@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sgp.hoopoes_management_system.Domain.Users.users;
+import com.sgp.hoopoes_management_system.Domain.Users.User;
 import com.sgp.hoopoes_management_system.Service.Users.AuthService;
 
 
@@ -23,17 +23,17 @@ public class UserAuthenticationController {
     AuthService authorizationService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody users data) {
+    public ResponseEntity login(@RequestBody User data) {
         return ResponseEntity.ok(authorizationService.authenticateUser(data));
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody users data) {
+    public ResponseEntity register(@RequestBody User data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authorizationService.registerUser(data));
     }
 
     @PutMapping("/update-password")
-    public ResponseEntity updatePassword(@RequestBody users data) {
+    public ResponseEntity updatePassword(@RequestBody User data) {
         authorizationService.updatePassword(data);
         return ResponseEntity.ok().build();
     }

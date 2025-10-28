@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sgp.hoopoes_management_system.Domain.Users.registerDTO;
 import com.sgp.hoopoes_management_system.Domain.Users.updatePasswordDTO;
-import com.sgp.hoopoes_management_system.Domain.Users.users;
+import com.sgp.hoopoes_management_system.Domain.Users.User;
 import com.sgp.hoopoes_management_system.Exception.BadRequestExceptionError;
 import com.sgp.hoopoes_management_system.Repository.Users.userRepository;
 
@@ -19,7 +19,7 @@ public class AuthService {
     private userRepository repository;
 
     @Transactional(readOnly = true)
-    public Optional<users> authenticateUser(users data) {
+    public Optional<User> authenticateUser(User data) {
         if (data.getLogin().isEmpty() || data.getPassword().isEmpty()) {
             throw new BadRequestExceptionError("Login e senha são obrigatórios.");
         }
@@ -28,7 +28,7 @@ public class AuthService {
     }
 
     @Transactional
-    public registerDTO registerUser(users data) {
+    public registerDTO registerUser(User data) {
         if (repository.findByLoginAndPassword(data.getLogin(), data.getPassword()).isPresent()) {
             throw new BadRequestExceptionError("Usuário já cadastrado.");    
         }
@@ -39,7 +39,7 @@ public class AuthService {
     }
 
     @Transactional
-    public void updatePassword(users data) {
+    public void updatePassword(User data) {
         if (repository.findByLogin(data.getLogin()).isEmpty()) {
             throw new BadRequestExceptionError("Usuário não cadastrado.");
         }
