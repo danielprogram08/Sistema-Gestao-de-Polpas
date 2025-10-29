@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sgp.hoopoes_management_system.Domain.Users.users;
-import com.sgp.hoopoes_management_system.Service.Users.AuthService;
+import com.sgp.hoopoes_management_system.Domain.Users.User;
+import com.sgp.hoopoes_management_system.Service.Users.UserService;
 
 
 @RestController
@@ -20,28 +20,32 @@ import com.sgp.hoopoes_management_system.Service.Users.AuthService;
 public class UserAuthenticationController {
 
     @Autowired
-    AuthService authorizationService;
+    UserService service;
 
+    // EndPoint de autenticação de usuário;
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody users data) {
-        return ResponseEntity.ok(authorizationService.authenticateUser(data));
+    public ResponseEntity login(@RequestBody User data) {
+        return ResponseEntity.ok(service.authenticateUser(data));
     }
 
+    // EndPoint de cadastro de usuário;
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody users data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(authorizationService.registerUser(data));
+    public ResponseEntity register(@RequestBody User data) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.registerUser(data));
     }
 
+    // EndPoint de alteração de senha;
     @PutMapping("/update-password")
-    public ResponseEntity updatePassword(@RequestBody users data) {
-        authorizationService.updatePassword(data);
-        return ResponseEntity.ok().build();
+    public ResponseEntity updatePassword(@RequestParam String newPassword, @RequestParam String login) {
+        service.updatePassword(newPassword, login);
+        return ResponseEntity.ok().body("Senha alterada com sucesso!");
     }
 
+    // EndPoint de exclusão de usuário;
     @DeleteMapping("/delete")
     public ResponseEntity deleteUser(@RequestParam Long id) {
-        authorizationService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+        service.deleteUser(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário excluído com sucesso!");
     }
 
     }

@@ -6,13 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.sgp.hoopoes_management_system.Domain.Users.users;
 
-public interface userRepository extends JpaRepository<users, Long> {
-    Optional<users> findByLoginAndPassword(String login, String password);
-    Optional<users> findByLogin(String login);
+import com.sgp.hoopoes_management_system.Domain.Users.User;
+
+public interface userRepository extends JpaRepository<User, Long> {
+    Optional<User> findByLoginAndPassword(String login, String password);
+    boolean existsByLogin(String login);
 
     @Modifying
-    @Query(value = "UPDATE users SET password = :password WHERE login = :login", nativeQuery = true)
-    void updatePassword(@Param("password") String password, @Param("login") String login);
+    @Query
+    (value = "UPDATE usuarios SET senha = :newPassword WHERE login = :login", nativeQuery = true)
+    void updatePassword(@Param("newPassword") String newPassword, @Param("login") String login);
 }
