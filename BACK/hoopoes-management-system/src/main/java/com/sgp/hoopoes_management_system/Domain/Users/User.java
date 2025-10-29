@@ -33,4 +33,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil", nullable = false)
     private UserRole role;
+
+    public User (String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 }

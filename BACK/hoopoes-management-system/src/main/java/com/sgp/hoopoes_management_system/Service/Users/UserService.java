@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sgp.hoopoes_management_system.Domain.Users.registerDTO;
-import com.sgp.hoopoes_management_system.Domain.Users.updatePasswordDTO;
+import com.sgp.hoopoes_management_system.Domain.Users.UserDTO;
 import com.sgp.hoopoes_management_system.Domain.Users.User;
 import com.sgp.hoopoes_management_system.Exception.BadRequestExceptionError;
 import com.sgp.hoopoes_management_system.Repository.Users.userRepository;
 
 @Service
-public class AuthService {
+public class UserService {
 
     @Autowired
     private userRepository repository;
 
+    // Autenticar usuário;
     @Transactional(readOnly = true)
     public Optional<User> authenticateUser(User data) {
         if (data.getLogin().isEmpty() || data.getPassword().isEmpty()) {
@@ -27,29 +27,33 @@ public class AuthService {
         return repository.findByLoginAndPassword(data.getLogin(), data.getPassword());
     }
 
+    // Cadastrar usuário;
     @Transactional
-    public registerDTO registerUser(User data) {
-        if (repository.findByLoginAndPassword(data.getLogin(), data.getPassword()).isPresent()) {
-            throw new BadRequestExceptionError("Usuário já cadastrado.");    
+    public UserDTO registerUser(User data) {
+        if (repository.existsByLogin(data.getLogin())) {
+            throw new BadRequestExceptionError("Usuário já cadastrado.");
         }
 
-        registerDTO dto = new registerDTO(data.getLogin(), data.getPassword(), data.getRole());
+        UserDTO dto = new UserDTO(data.getLogin(), data.getPassword(), data.getRole());
         repository.save(dto.convert());
         return dto;
     }
 
+    // Alterar senha;
     @Transactional
-    public void updatePassword(User data) {
-        if (repository.findByLogin(data.getLogin()).isEmpty()) {
+    public void updatePassword(String newPassword, String login) {
+        if (!repository.existsByLogin(login)) {
             throw new BadRequestExceptionError("Usuário não cadastrado.");
         }
-        
-        updatePasswordDTO dto = new updatePasswordDTO(data.getLogin(), data.getPassword());
-        repository.updatePassword(dto.login(), data.getPassword());
+        repository.updatePassword(newPassword, login);
     }
 
+    // Excluir usuário;
     @Transactional
     public void deleteUser(Long id) {
+        if (!repository.existsById(id)) {
+            throw new BadRequestExceptionError("Usuário não cadastrado.");
+        }
         repository.deleteById(id);
     }
 }

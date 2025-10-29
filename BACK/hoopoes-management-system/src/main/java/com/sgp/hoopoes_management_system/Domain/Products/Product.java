@@ -20,29 +20,29 @@ public class Product {
     @Column(name = "id_produto")
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String nome;
+    @Column(name = "nome", nullable = false, unique = true, length = 100)
+    private String name;
 
-    @Column(length = 50)
-    private String categoria;
+    @Column(name = "categoria", length = 50)
+    private String category;
 
-    @Column(name = "unidade_medi", nullable = false, length = 20)
-    private String unidadeMedi;
+    @Column(name = "unidade_medida", nullable = false, length = 20)
+    private String unityMeasure;
 
-    @Column(name = "estoque_minir", nullable = false)
-    private Integer estoqueMinir;
+    @Column(name = "estoque_minimo", nullable = false)
+    private Integer minimumStock;
 
     @Column(name = "preco_venda", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoVenda;
+    private BigDecimal price;
 
-    @Column(nullable = false)
-    private Boolean ativo = true;
+    @Column(name = "ativo", nullable = false)
+    private Boolean active = true;
 
     @Column(name = "data_cadastro", nullable = false)
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dateRegister;
 
     @PrePersist
     protected void onCreate() {
-        this.dataCadastro = LocalDateTime.now();
+        this.dateRegister = LocalDateTime.now();
     }
 }
