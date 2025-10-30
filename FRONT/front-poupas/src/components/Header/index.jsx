@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from '../Button';
 
 import { FaUserCircle } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
