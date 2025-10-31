@@ -1,4 +1,5 @@
 import Button from '../Button';
+import Input from '../Input';
 
 import { FaUserCircle } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -14,7 +15,8 @@ export default function Header() {
                     <h1 className="text-white text-[35px]">Casa Bessa Polpas</h1>
                 </div>
                 <div className="flex justify-center w-[50%]">
-                    <input type="search" placeholder="Pesquisar polpa" className="bg-white w-[65%] rounded-xs h-8"></input>
+                    {<Input placeholder={"Pesquisar polpa"} containerClassName="w-[70%]"/>
+                    /* <input type="search" placeholder="Pesquisar polpa" className="bg-white w-[65%] rounded-xs h-8"></input> */}
                 </div>
                 <div className="flex justify-around w-[25%]">
                     <Button iconOnly><FaUserCircle color="white" size="25px" /></Button>
