@@ -7,7 +7,7 @@ export default function Input({ id, label, type = "text", placeholder, value, on
                 placeholder={placeholder || ' '}
                 value={value}
                 onChange={onChange}
-                className="block w-full px-4 py-3 text-gray-900 bg-transparent border-2 border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block w-full px-4 py-3 text-white bg-transparent border-2 border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-blue-200 peer"
                 {...rest}
             />
             <label
