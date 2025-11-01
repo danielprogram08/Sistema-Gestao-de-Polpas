@@ -1,13 +1,26 @@
-export default function Button({children, iconOnly = false}) {
-    
-    const baseClasses = "flex items-center pt-3.5 pb-3.5 pl-10 pr-10 bg-[#51515c] rounded-[7px] text-white font-semibold cursor-pointer";
-    const iconClasses = "p-0 bg-transparent cursor-pointer";
-    const finalClasses = iconOnly ? iconClasses : baseClasses;
+export default function Button({ children, iconOnly = false, variant = 'primary', size = 'medium', ...rest }) {
+    const baseClasses = "flex items-center justify-center font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300";
 
+    const variants = {
+        primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+        secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400',
+    };
+
+    const sizes = {
+        small: 'px-3 py-1.5 text-sm',
+        medium: 'px-4 py-2 text-base',
+        large: 'px-6 py-3 text-lg',
+    };
+
+    const iconClasses = "p-2 bg-transparent cursor-pointer";
+
+    const finalClasses = iconOnly
+        ? `${iconClasses} ${sizes[size]}`
+        : `${baseClasses} ${variants[variant]} ${sizes[size]}`;
 
     return (
-        <button className={finalClasses}>
+        <button className={finalClasses} {...rest}>
             {children}
         </button>
-    )
+    );
 }
