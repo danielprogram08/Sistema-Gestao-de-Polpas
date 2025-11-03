@@ -1,3 +1,3 @@
 .vscode
-DB/docker-compose.yml
+BACK/hooopes-management-system/docker-compose.yml
 BACK/hoopoes-management-system/RequestTest.rest
