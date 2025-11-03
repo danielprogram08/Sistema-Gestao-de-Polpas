@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
+import CadastrarProdutoForm from './components/CadastroProdutoForm';
 
 function App() {
   return (
@@ -13,7 +14,11 @@ function App() {
         <Link to="/register" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
           Cadastro
         </Link>
+        <Link to="/" className="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
+          Cadastrar Produto
+        </Link>
       </div>
+      <CadastrarProdutoForm />
     </div>
   );
 }
