@@ -1,4 +1,4 @@
-export default function Button({ children, iconOnly = false, variant = 'primary', size = 'medium', ...rest }) {
+export default function Button({ children, iconOnly = false, variant = 'primary', size = 'medium', className= '', ...rest }) {
     const baseClasses = "flex items-center justify-center font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300";
 
     const variants = {
@@ -14,9 +14,11 @@ export default function Button({ children, iconOnly = false, variant = 'primary'
 
     const iconClasses = "p-2 bg-transparent cursor-pointer";
 
-    const finalClasses = iconOnly
+    const selectedClasses = iconOnly
         ? `${iconClasses} ${sizes[size]}`
         : `${baseClasses} ${variants[variant]} ${sizes[size]}`;
+
+    const finalClasses = `${selectedClasses} ${className}`;    
 
     return (
         <button className={finalClasses} {...rest}>

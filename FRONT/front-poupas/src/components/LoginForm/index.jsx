@@ -19,7 +19,6 @@ export default function LoginForm() {
                 id="email"
                 label="Email"
                 type="email"
-                placeholder="Digite seu email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
@@ -27,7 +26,6 @@ export default function LoginForm() {
                 id="password"
                 label="Senha"
                 type="password"
-                placeholder="Digite sua senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />

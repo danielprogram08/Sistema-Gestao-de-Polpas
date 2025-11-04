@@ -25,7 +25,7 @@ export default function CadastrarProdutoForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6 border-2 w-[20%] flex flex-col items-center">
+        <form onSubmit={handleSubmit} className="space-y-6 w-full">
             <CustomInput
                 id="nome"
                 label="Nome do Produto"
@@ -67,7 +67,7 @@ export default function CadastrarProdutoForm() {
                 onChange={handleChange}
                 containerClassName="w-full"
             />
-            <Button>
+            <Button className='w-full'>
                 Cadastrar Produto
             </Button>
         </form>

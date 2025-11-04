@@ -7,12 +7,22 @@ import App from './App.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import AuthLayout from './layouts/AuthLayout.jsx';
+import CadastrarProduto from './pages/CadastrarProduto.jsx';
 
 const router = createBrowserRouter([
+  //Rota principal (talvez por enquanto só)
   {
     path: '/',
     element: <App />,
   },
+
+  //Rota de Cadastro de Produto
+  {
+    path: '/cadastrar-produto',
+    element: <CadastrarProduto />, 
+  },
+  
+  //Rota de Autenticação com layout
   {
     element: <AuthLayout />,
     children: [
