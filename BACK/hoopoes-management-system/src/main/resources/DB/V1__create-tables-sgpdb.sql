@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS produtos (
     estoque_minimo INT NOT NULL,
     preco_venda DECIMAL(10,2) NOT NULL,
     ativo BOOLEAN NOT NULL DEFAULT TRUE,
-    data_cadastro TIMESTAMP NOT NULL
+    data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS lotes (
@@ -24,26 +24,26 @@ CREATE TABLE IF NOT EXISTS lotes (
     data_validade DATE NOT NULL,
     qtd_inicial INT NOT NULL,
     qtd_atual INT NOT NULL,
-    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE RESTRICT
+    CONSTRAINT fk_lotes_produtos FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS vendas (
     id_venda BIGSERIAL PRIMARY KEY,
     id_usuario BIGINT NOT NULL,
-    data_hora_venda TIMESTAMP NOT NULL,
+    data_hora_venda TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     forma_pagamento TEXT NOT NULL,
     total_venda DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE RESTRICT
+    CONSTRAINT fk_vendas_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS itens_venda (
     id_item_venda BIGSERIAL PRIMARY KEY,
     id_venda BIGINT NOT NULL,
     id_lote BIGINT NOT NULL,
-    qtd_vendida INT NOT NULL,
+    qtd_vendida INTEGER NOT NULL,
     preco_unitario DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
-    FOREIGN KEY (id_lote) REFERENCES lotes(id_lote) ON DELETE RESTRICT
+    CONSTRAINT fk_itens_venda_vendas FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
+    CONSTRAINT fk_itens_venda_lotes FOREIGN KEY (id_lote) REFERENCES lotes(id_lote) ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS movimentacoes (
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS movimentacoes (
     tipo_movimentacao TEXT NOT NULL,
     id_lote BIGINT NOT NULL,
     qtd_movimentada INT NOT NULL,
-    data_movimentacao TIMESTAMP NOT NULL,
+    data_movimentacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_usuario BIGINT NOT NULL,
-    FOREIGN KEY (id_lote) REFERENCES lotes(id_lote) ON DELETE RESTRICT,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE RESTRICT
+    CONSTRAINT fk_movimentacoes_lotes FOREIGN KEY (id_lote) REFERENCES lotes(id_lote) ON DELETE RESTRICT,
+    CONSTRAINT fk_movimentacoes_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE RESTRICT
 );

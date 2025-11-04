@@ -34,3 +34,6 @@ build/
 
 ### REST TEST ###
 RequestTest.rest
+
+### DOCKER COMPOSE ###
+docker-compose.yml
