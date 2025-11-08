@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Link to="/cadastrar-produto" className="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
           Cadastrar Produto
         </Link>
+      </div>
+      <div>
+        <Dashboard />
       </div>
     </div>
   );
