@@ -8,6 +8,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import AuthLayout from './layouts/AuthLayout.jsx';
 import CadastrarProduto from './pages/CadastrarProduto.jsx';
+import Dashboard from './pages/DashboardPage.jsx';
 
 const router = createBrowserRouter([
   //Rota principal (talvez por enquanto só)
@@ -20,6 +21,12 @@ const router = createBrowserRouter([
   {
     path: '/cadastrar-produto',
     element: <CadastrarProduto />, 
+  },
+
+  //Rota para Dashboard
+  {
+    path: '/dashboard',
+    element: <Dashboard />
   },
   
   //Rota de Autenticação com layout

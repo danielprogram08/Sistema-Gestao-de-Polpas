@@ -8,20 +8,17 @@ const STATUS_COLORS = {
 
 export default function CardListItem({ item, variant }) {
 
-    const baseClasses = "flex justify-between items-center p-3 rounded-md bg-white border border-gray-200 shadow-sm";
+    const baseClasses = "flex justify-between items-center p-3 rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-all duration-300";
 
     if (variant === 'stock') {
         const statusColor = STATUS_COLORS[item.status] || 'bg-gray-400';
 
         return (
             <div className={baseClasses}>
-                {/* Informação do Produto e Quantidade */}
                 <div className="text-sm text-gray-800">
-                    {item.name}: <span className="font-semibold">{item.units} un. restantes</span>
+                    {item.name}: <span className="font-bold text-gray-900">{item.units} un. restantes</span>
                 </div>
-                <div className={`w-3 h-5 rounded-sm ${statusColor}`} title={`Status: ${item.status}`}>
-                    {/* Barra de Status Visual */}
-                </div>
+                <div className={`w-3 h-3 rounded-full ${statusColor}`} title={`Status: ${item.status}`}></div>
             </div>
         )
     }
@@ -34,13 +31,10 @@ export default function CardListItem({ item, variant }) {
 
         return (
             <div className={baseClasses}>
-                {/* Informação do Produto e Vendas */}
                 <div className="text-sm text-gray-800">
-                    {item.name}: <span className="font-semibold">{item.sales} un. vendidas</span>
+                    {item.name}: <span className="font-bold text-gray-900">{item.sales} un. vendidas</span>
                 </div>
-
-                {/* Valor da Venda */}
-                <div className="text-sm font-medium text-green-700">
+                <div className="text-sm font-semibold text-green-600">
                     {priceFormatted}
                 </div>
             </div>
