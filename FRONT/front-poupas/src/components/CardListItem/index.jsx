@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa6";
 
 const STATUS_COLORS = {
     low: 'bg-red-500',
@@ -40,5 +42,22 @@ export default function CardListItem({ item, variant }) {
             </div>
         );
     }
+
+    if (variant === 'movement') {
+    const isEntry = item.type === 'in'; // 'in' para entrada, 'out' para saída
+    const iconColor = isEntry ? 'text-green-600' : 'text-red-600';
+    
+    // Importe os ícones no topo do arquivo! (ex: FaArrowRight, FaArrowLeft da react-icons/fa)
+    const ArrowIcon = isEntry ? FaArrowLeft : FaArrowRight; // Seta Verde para DENTRO (Left), Seta Vermelha para FORA (Right)
+    
+    return (
+        <div className={baseClasses}>
+            <div className="text-sm text-gray-800">
+                {item.name}: <span className="font-semibold">{item.units} un.</span>
+            </div>
+            <ArrowIcon className={iconColor} size={20} />
+        </div>
+    );
+}
     return <div className="p-3 text-red-500">Erro: Variante não reconhecida.</div>;
 }
