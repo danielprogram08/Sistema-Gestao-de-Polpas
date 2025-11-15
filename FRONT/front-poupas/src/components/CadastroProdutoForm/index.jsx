@@ -86,11 +86,11 @@ export default function CadastrarProdutoForm() {
                 </div>
             </div>
             <div className="flex justify-end gap-4">
-                <Button type="button" variant="danger">
-                    Cancelar
-                </Button>
-                <Button type="submit" variant="success">
+                <Button type="button" variant="success">
                     Cadastrar Produto
+                </Button>
+                <Button type="submit" variant="danger">
+                    Cancelar
                 </Button>
             </div>
         </form>

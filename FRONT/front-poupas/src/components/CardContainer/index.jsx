@@ -2,7 +2,7 @@ import React from 'react';
 import CardListItem from '../CardListItem';
 import Button from '../Button';
 
-export default function CardContainer({ title, data, variant }) {
+export default function CardContainer({ title, data, variant, children }) {
 
     const variantClasses = {
         'low-stock': {
@@ -20,6 +20,11 @@ export default function CardContainer({ title, data, variant }) {
             titleColor: 'text-yellow-800',
             borderColor: 'border-yellow-200'
         },
+        'stock-report': { 
+            bg: 'bg-gray-50',
+            titleColor: 'text-gray-800',
+            borderColor: 'border-gray-200'
+        },
         'default': {
             bg: 'bg-gray-50',
             titleColor: 'text-gray-800',
@@ -31,6 +36,7 @@ export default function CardContainer({ title, data, variant }) {
 
     const itemType = (variant === 'low-stock') ? 'stock' :
                      (variant === 'sales') ? 'sales' :
+                     (variant === 'stock-report') ? 'stock-report' :
                      null;
 
     return (
@@ -40,12 +46,22 @@ export default function CardContainer({ title, data, variant }) {
             </div>
 
             <div className="space-y-4">
-                {itemType && data && data.length > 0 ? (
+                {/* Caminho 1: Se 'children' forem fornecidos (para "Vendas", "Mais Vendidos"), 
+                  * renderize-os. 
+                  */}
+                {children ? (
+                    children
+                ) : 
+                
+                /* Caminho 2: Se não houver 'children', use a lógica de 'data' 
+                  * (para "Estoque atual", "Estoque baixo").
+                  */
+                itemType && data && data.length > 0 ? (
                     data.map((item, index) => (
                         <CardListItem
                             key={index}
                             item={item}
-                            variant={itemType}
+                            variant={itemType} // Passará 'stock', 'sales', ou 'stock-report'
                         />
                     ))
                 ) : (

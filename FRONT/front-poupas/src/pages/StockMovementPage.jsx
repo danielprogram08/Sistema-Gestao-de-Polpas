@@ -16,15 +16,17 @@ const movementData = [
 
 export default function StockMovementPage() {
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+        <div className='flex flex-col items-center min-h-screen bg-gray-100'>
             <Header />
 
-            <div className="py-12 w-[55%] mt-16">
-                <StockMovementList 
-                    title="Entrada/Saída"
-                    data={movementData}
-                    itemVariant="movement"
-                />
+            <div className="flex flex-col items-center w-[55%] mt-28">
+                <div className="w-full">
+                    <StockMovementList 
+                        title="Entrada/Saída de Produtos"
+                        data={movementData}
+                        itemVariant="movement"
+                    />
+                </div>
             </div>
         </div>
     );

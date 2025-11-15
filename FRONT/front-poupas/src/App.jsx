@@ -23,6 +23,9 @@ function App() {
         <Link to="/stock-movement" className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
           Entrada/Saída
         </Link>
+        <Link to="/reports" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          Relatórios
+        </Link>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import AuthLayout from './layouts/AuthLayout.jsx';
 import CadastrarProduto from './pages/CadastrarProduto.jsx';
 import Dashboard from './pages/DashboardPage.jsx';
 import StockMovementPage from './pages/StockMovementPage.jsx';
+import ReportsPage from './pages/ReportsPage.jsx';
 
 const router = createBrowserRouter([
   //Rota principal (talvez por enquanto só)
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
   {
     path: '/stock-movement',
     element: <StockMovementPage />
+  },
+
+  //Rota para Relatórios
+  {
+    path: '/reports',
+    element: <ReportsPage />
   },
   
   //Rota de Autenticação com layout
