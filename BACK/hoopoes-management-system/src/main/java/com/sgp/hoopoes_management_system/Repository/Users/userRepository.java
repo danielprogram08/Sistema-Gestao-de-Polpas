@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.sgp.hoopoes_management_system.Domain.Users.User;
 
-public interface userRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByLoginAndPassword(String login, String password);
     boolean existsByLogin(String login);
 

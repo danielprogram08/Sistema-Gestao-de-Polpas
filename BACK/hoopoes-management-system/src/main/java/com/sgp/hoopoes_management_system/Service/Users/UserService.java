@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sgp.hoopoes_management_system.Domain.Users.UserDTO;
 import com.sgp.hoopoes_management_system.Domain.Users.User;
 import com.sgp.hoopoes_management_system.Exception.BadRequestExceptionError;
-import com.sgp.hoopoes_management_system.Repository.Users.userRepository;
+import com.sgp.hoopoes_management_system.Repository.Users.UserRepository;
 
 @Service
 public class UserService {
 
     @Autowired
-    private userRepository repository;
+    private UserRepository repository;
 
     // Autenticar usuário;
     @Transactional(readOnly = true)
